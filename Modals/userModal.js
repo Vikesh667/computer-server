@@ -21,6 +21,14 @@ const userScheam=new mongoose.Schema({
   image:{
     type:String,
     required:true
+  },
+  is_admin:{
+    type:Number,
+    required:true
+  },
+  is_verifyed:{
+    type:Number,
+    default:0
   }
 })
 const User=new mongoose.model("User",userScheam)
