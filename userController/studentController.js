@@ -1,5 +1,4 @@
 const Student = require("../Modals/studentInfo");
-
 const form = async (req, res) => {
 
     try{
