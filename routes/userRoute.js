@@ -7,7 +7,8 @@ user_route.use(express.json())
 user_route.use(cors())
 user_route.use(express.urlencoded({extended:true}))
 
-
+user_route.set("view engine","ejs")
+user_route.set("views","./views")
 const multer=require("multer")
 const path= require("path");
 
@@ -34,9 +35,6 @@ const userController=require("../userController/userController")
 user_route.post('/register',upload.single("image"),userController.register)
 user_route.post("/login",userController.loginUser)
 user_route.get('/verify',userController.verifyMail)
-
-
-
 module.exports=user_route
 
 

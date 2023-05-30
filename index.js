@@ -8,6 +8,10 @@ mongoose.connect("mongodb+srv://vikesh667kumar:test123@test.pqappvm.mongodb.net/
 
 const userRoute=require("./routes/userRoute")
 app.use('/api',userRoute)
+
+
+const adminRoute=require("./routes/adminRoute")
+app.use('/api',adminRoute)
 app.listen(8000,()=>{
     console.log("server is runing... on port 8000")
 })

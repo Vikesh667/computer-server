@@ -31,7 +31,7 @@ const sendVerifyMail = async (name, email, user_id) => {
         name +
         ' ,please click here to <a href="http://localhost:8000/verify?id=' +
         user_id +
-        '">verify</a>your mail </p> ',
+        '">verify</a>your mail  ',
     };
     transporter.sendMail(mailOption, function (error, info) {
       if (error) {
@@ -95,15 +95,18 @@ const loginUser = async (req, res) => {
     res.status(400).send(error.message);
   }
 };
-const verifyMail=async(req,res)=>{
-  try{
-   const updated=await User.updateOne({_id:req.id.query.id},{$set:{is_verified:1}})
-   console.log(updated)
-   res.status(200).send({message:"Eamil verify is successful"})
-  }catch(error){
-    console.log(error)
+const verifyMail = async (req, res) => {
+  try {
+    const updateInfo = await User.updateOne(
+      { _id: req.query.id },
+      { $set: { is_varified: 1 } }
+    );
+    console.log(updateInfo);
+    return res.render("verified",{message:"mail has verified"});
+  } catch (error) {
+    console.log(error.message);
   }
-}
+};
 module.exports = {
   register,
   loginUser,
