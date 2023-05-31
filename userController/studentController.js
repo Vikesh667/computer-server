@@ -42,6 +42,20 @@ const form = async (req, res) => {
     }
  
 }
+const getFromData=async(req,res)=>{
+         try{
+          const userinfo= await Student.find({})
+    
+          if(userinfo){
+            res.status(200).send({message:"your user detail fetch successfuly",userinfo})
+          }else{
+            res.status(201).send({message:"user information not found"})
+          }
+         }catch(error){
+            res.status(400).send({message:"Something wrong please check your internet"})
+         }
+}
 module.exports = {
   form,
+  getFromData
 };
