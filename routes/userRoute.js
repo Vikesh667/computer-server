@@ -34,7 +34,9 @@ const upload=multer({storage:storage})
 const userController=require("../userController/userController")
 user_route.post('/register',upload.single("image"),userController.register)
 user_route.post("/login",userController.loginUser)
-user_route.get('/verify',userController.verifyMail)
+user_route.post('/sendpasswordlink',userController.sendPasswordLink)
+user_route.get('/forgotpassword/:id/:token',userController.forgotPassword)
+user_route.post('/:id/:token',userController.setPassword)
 module.exports=user_route
 
 

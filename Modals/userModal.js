@@ -27,9 +27,14 @@ const userScheam=new mongoose.Schema({
     required:true
   },
   is_varified:{
-    type:Number,
-    default:0
-  }
+    type:String,
+    
+  },
+  token:{
+    type:String,
+    default:''
+ }
+
 })
 const User=new mongoose.model("User",userScheam)
 module.exports=User
